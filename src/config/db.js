@@ -1,12 +1,14 @@
-
-
-const e = require('express')
 const mongoose = require('mongoose')
+require('dotenv').config()
+const MongoURI = process.env.MONGO_URI
 
 const connectToMongo = async () => {
-    await mongoose.connect('mongodb+srv://campusFind:pawan@cluster0.vg9d6d6.mongodb.net/?retryWrites=true&w=majority', () => {
-        console.log('connected')
-    })
+    try {
+        const connect = await mongoose.connect(MongoURI)
+        console.log(connect.connection.host)
+    }catch(e){
+        console.log(e)
+    }
 }
 
 module.exports = connectToMongo

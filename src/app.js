@@ -1,8 +1,8 @@
-import connectToMongo from './db'
 
 const express = require('express')
 const app = express()
 const port = 3000
+const connectToMongo = require('./config/db')
 
 connectToMongo()
 
